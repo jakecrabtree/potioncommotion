@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: ce5c3d0d873ad4fa4b1a488af77049da
+timeCreated: 1523835452
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Italian Breakfast
+  fontNames:
+  - Italian Breakfast
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 16cc12e469c534530b32154aa9d7cc38, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
