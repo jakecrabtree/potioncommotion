@@ -8,6 +8,8 @@ public class pickupScript : MonoBehaviour {
     private bool leftCanGrab;
     private bool isRightHeld;
     private bool isLeftHeld;
+    private static bool rightHasObject;
+    private static bool leftHasObject;
 
     private GameObject MyRightHand;
     private GameObject MyLeftHand;
@@ -18,14 +20,14 @@ public class pickupScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxis("HTC_VIU_RightTrigger") > 0 && rightCanGrab)
+		if (Input.GetAxis("HTC_VIU_RightTrigger") > 0 && rightCanGrab && !rightHasObject)
         {
             transform.parent = MyRightHand.transform;
             isRightHeld = true;
             GetComponent<Rigidbody>().useGravity = false;
             GetComponent<Rigidbody>().isKinematic = true;
         }
-        if (Input.GetAxis("HTC_VIU_LeftTrigger") > 0 && leftCanGrab)
+        if (Input.GetAxis("HTC_VIU_LeftTrigger") > 0 && leftCanGrab && !leftHasObject)
         {
             transform.parent = MyLeftHand.transform;
             isLeftHeld = true;
@@ -43,6 +45,7 @@ public class pickupScript : MonoBehaviour {
                 GetComponent<Rigidbody>().isKinematic = false;
                 GetComponent<Rigidbody>().AddForce(MyRightHand.GetComponent<HandForce>().Force * 5000);
                 isRightHeld = false;
+                rightHasObject = false;
             }
 
 
@@ -53,6 +56,7 @@ public class pickupScript : MonoBehaviour {
             {
                 transform.parent = null;
                 isLeftHeld = false;
+                leftHasObject = false;
                 GetComponent<Rigidbody>().useGravity = true;
                 GetComponent<Rigidbody>().isKinematic = false;
                 GetComponent<Rigidbody>().AddForce(MyLeftHand.GetComponent<HandForce>().Force * 5000);
@@ -71,6 +75,32 @@ public class pickupScript : MonoBehaviour {
         {
             MyRightHand = other.gameObject;
             rightCanGrab = true;
+        }
+    }
+
+    void OnDestroy()
+    {
+         if (isRightHeld)
+        {
+            rightHasObject = false;
+        }
+         if (isLeftHeld)
+        {
+            leftHasObject = false;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "LeftHand")
+        {
+            MyLeftHand = null;
+            leftCanGrab = false;
+        }
+        if (other.tag == "RightHand")
+        {
+            MyRightHand = null;
+            rightCanGrab = false;
         }
     }
 

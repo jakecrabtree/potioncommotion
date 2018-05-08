@@ -38,6 +38,7 @@ public class LeftControls : MonoBehaviour
     void OnCollisionEnter(Collision other){
         if (Input.GetAxis("HTC_VIU_LeftTrigger") > 0)
         {
+            Debug.Log("Here");
             other.gameObject.transform.parent = gameObject.transform;
             hasObject = true;
             heldObject = other.gameObject;

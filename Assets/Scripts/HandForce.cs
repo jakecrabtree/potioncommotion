@@ -6,6 +6,7 @@ public class HandForce : MonoBehaviour {
 
     private Vector3 lastFrame;
     public Vector3 Force { get; set; }
+    public bool hasObject;
 
 	// Use this for initialization
 	void Start () {
