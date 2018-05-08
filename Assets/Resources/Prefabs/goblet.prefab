@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1078367919154836}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.29, y: 1.08, z: -0.61}
+  m_LocalPosition: {x: 0.998, y: 1.032, z: 0.166}
   m_LocalScale: {x: 6.184286, y: 9.963569, z: 6.184284}
   m_Children:
   - {fileID: 4331287860294466}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   containsCompletedPotion: 0
   spawnPos: {x: 0, y: 0, z: 0}
-  spawnPoint: {fileID: 0}
+  recipeManager: {fileID: 0}
 --- !u!114 &114568917729510544
 MonoBehaviour:
   m_ObjectHideFlags: 1

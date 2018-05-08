@@ -30,5 +30,14 @@ public class Timer : MonoBehaviour {
         seconds = (seconds < 0) ? 0 : seconds;
         string leadingZero = (seconds < 10) ? "0" : ""; 
         text.text = "Time:\n" + minutes + ":" + leadingZero + seconds;
+        if (timer <= 0)
+        {
+            EndGame();
+        }
+    }
+
+    void EndGame()
+    {
+
     }
 }

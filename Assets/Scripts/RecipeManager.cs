@@ -62,8 +62,6 @@ public class RecipeManager : MonoBehaviour
 
     void Start()
     {
-        // spawnptObject = GameObject.FindGameObjectWithTag("SpawnPoint");
-        // spawn = spawnptObject.GetComponent<SpawnPoint>();
         audio = GetComponent<AudioSource>();
         bellDing = Resources.Load<AudioClip>("Audio/bell");
         pencilCheck = Resources.Load<AudioClip>("Audio/pencil-check");
@@ -71,6 +69,7 @@ public class RecipeManager : MonoBehaviour
         ChooseRecipe(currentRecipe);
         roomAudio = GameObject.Find("Room Audio").GetComponent<AudioSource>();
         LoadBarks();
+        spawnPoint.RespawnAll();
     }
 
     // Update is called once per frame
@@ -109,6 +108,7 @@ public class RecipeManager : MonoBehaviour
 
     public void deliverPotion(GameObject cupObj)
     {
+        Debug.Log("Makes it here");
         correctInCup = false;
         ChooseRecipe(currentRecipe);
         Instantiate(poof, cupObj.transform);
@@ -149,11 +149,6 @@ public class RecipeManager : MonoBehaviour
                         string ingredAsText = reader.ReadLine();
                         string[] ingredArr = ingredAsText.Split(',');
                         int numOfIngredients = int.Parse(ingredArr[1]);
-                        /* if (!spawn.amtInScene.ContainsKey(ingredArr[0]))
-                         {
-                             spawn.amtInScene.Add(ingredArr[0], AMOUNT_IN_SCENE);
-                         }
-                         */
                         recipe.addToRecipe(ingredArr[0], numOfIngredients);
                         recipe.totalIngredients += numOfIngredients;
                     }
@@ -238,12 +233,14 @@ public class RecipeManager : MonoBehaviour
     Recipe currentRecipe;
     Dictionary<string, int> currentValues;
     int addedIngredients;
+
     List<Recipe> allRecipes;
+    //Total # of loaded recipes
     int numRecipes = 1;
+
+    //Current completed amt of recipes
     int numCompletedRecipes = 0;
 
-  //  public GameObject[] spawnPointObjects;
-  //  private SpawnPoint[] spawnPoints;
     AudioSource audio;
     AudioClip pencilCheck;
     AudioClip bellDing;
@@ -258,6 +255,7 @@ public class RecipeManager : MonoBehaviour
         "Audio/Barks/whyIsThisYellow"};
     AudioClip[] barks;
 
+    public SpawnPoint spawnPoint;
 
     public GameObject sparkles;
     public GameObject poof;

@@ -11,7 +11,7 @@ public class Cup : MonoBehaviour
 	void Start()
 	{
         containsCompletedPotion = false;
-        spawnPos = new Vector3(-0.29f,1.08f,-0.61f);
+        spawnPos = new Vector3(0.998f,1.032f,0.166f);
     }
 
     // Update is called once per frame
