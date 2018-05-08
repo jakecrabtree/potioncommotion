@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Wall
   - SpawnPoint
-  - Forlorn Flask
-  - Vial of Vitality
   - Spiky Boy
   - LeftHand
   - RightHand
@@ -17,6 +15,7 @@ TagManager:
   - Silly Spider
   - Red Dye 40
   - Tears of a Blue Man
+  - Cauldron
   layers:
   - Default
   - TransparentFX

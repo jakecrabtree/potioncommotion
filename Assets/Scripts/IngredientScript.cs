@@ -14,9 +14,8 @@ public class IngredientScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Wall")
+        if (other.tag == "Wall" || other.tag == "Cauldron")
         {
-            Debug.Log(gameObject.transform.name);
             LeftBounds();
         }
     }

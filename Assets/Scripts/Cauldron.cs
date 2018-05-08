@@ -5,8 +5,8 @@ using System.Collections;
 public class Cauldron : MonoBehaviour
 {
     public RecipeManager recipeManager;
-    public GameObject spawnptObject;
-    public SpawnPoint spawn;
+  //  public GameObject spawnptObject;
+   // public SpawnPoint spawn;
     public GameObject bubbles;
     public ParticleSystem bubSys;
 
@@ -17,8 +17,8 @@ public class Cauldron : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-        spawnptObject = GameObject.FindGameObjectWithTag("SpawnPoint");
-        spawn = spawnptObject.GetComponent<SpawnPoint>();
+  //      spawnptObject = GameObject.FindGameObjectWithTag("SpawnPoint");
+//       spawn = spawnptObject.GetComponent<SpawnPoint>();
         Renderer liquidRenderer = gameObject.transform.Find("Liquid").gameObject.GetComponent<Renderer>();
         liquidRenderer.enabled = false;
         sourcySizzle = GetComponents<AudioSource>()[1];
@@ -60,8 +60,6 @@ public class Cauldron : MonoBehaviour
                 main.startColor = colors[currColor];
                 Instantiate(bubSys, transform);
                 bubSys.Play();
-                spawn.DestroyedObject(other.gameObject.tag);
-                Destroy(other.gameObject);
             }
 
         }

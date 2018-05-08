@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
-using System.IO;                                                        // The System.IO namespace contains functions related to loading and saving files
+using System.IO;   // The System.IO namespace contains functions related to loading and saving files
+using UnityEngine.UI;
 
 [System.Serializable]
 public class RecipeManager : MonoBehaviour
@@ -110,6 +111,8 @@ public class RecipeManager : MonoBehaviour
         Instantiate(poof, cupObj.transform);
         cupObj.GetComponent<Cup>().LeftBounds();
         Instantiate(sparkles, gameObject.transform);
+        numCompletedRecipes++;
+        scoreText.text = "Score:\n" + numCompletedRecipes;
     }
 
 
@@ -214,16 +217,20 @@ public class RecipeManager : MonoBehaviour
 
 
     const int AMOUNT_IN_SCENE = 3;
-    // Use this for initialization
     Recipe currentRecipe;
     Dictionary<string, int> currentValues;
     int addedIngredients;
     List<Recipe> allRecipes;
     int numRecipes = 1;
-    public bool correctInCup;
-    public GameObject[] spawnPointObjects;
-    private SpawnPoint[] spawnPoints;
+    int numCompletedRecipes = 0;
+
+  //  public GameObject[] spawnPointObjects;
+  //  private SpawnPoint[] spawnPoints;
     AudioSource audio;
+
+
     public GameObject sparkles;
     public GameObject poof;
+    public bool correctInCup;
+    public Text scoreText;
 }
