@@ -65,9 +65,12 @@ public class RecipeManager : MonoBehaviour
         // spawnptObject = GameObject.FindGameObjectWithTag("SpawnPoint");
         // spawn = spawnptObject.GetComponent<SpawnPoint>();
         audio = GetComponent<AudioSource>();
+        bellDing = Resources.Load<AudioClip>("Audio/bell");
+        pencilCheck = Resources.Load<AudioClip>("Audio/pencil-check");
         allRecipes = LoadRecipes();
         ChooseRecipe(currentRecipe);
-        // deliverPotion();
+        roomAudio = GameObject.Find("Room Audio").GetComponent<AudioSource>();
+        LoadBarks();
     }
 
     // Update is called once per frame
@@ -94,7 +97,7 @@ public class RecipeManager : MonoBehaviour
                     addedIngredients++;
                     if (currentValues[type] == 0)
                     {
-                        audio.Play();
+                        audio.PlayOneShot(pencilCheck);
                     }
                     UpdateText();
                     return true;
@@ -113,8 +116,14 @@ public class RecipeManager : MonoBehaviour
         Instantiate(sparkles, gameObject.transform);
         numCompletedRecipes++;
         scoreText.text = "Score:\n" + numCompletedRecipes;
+        audio.PlayOneShot(bellDing);
+        Invoke("Bark", 1);
     }
 
+    void Bark()
+    {
+        roomAudio.PlayOneShot(barks[Random.Range(0, barks.Length)]);
+    }
 
     List<Recipe> LoadRecipes()
     {
@@ -157,6 +166,15 @@ public class RecipeManager : MonoBehaviour
             print("Settings not found");
         }
         return recipes;
+    }
+
+    void LoadBarks()
+    {
+        barks = new AudioClip[barkFileNames.Length];
+        for (int i = 0; i < barkFileNames.Length; i++)
+        {
+            barks[i] = Resources.Load<AudioClip>(barkFileNames[i]);
+        }
     }
 
     void ChooseRecipe(Recipe previous)
@@ -227,6 +245,18 @@ public class RecipeManager : MonoBehaviour
   //  public GameObject[] spawnPointObjects;
   //  private SpawnPoint[] spawnPoints;
     AudioSource audio;
+    AudioClip pencilCheck;
+    AudioClip bellDing;
+
+    AudioSource roomAudio;
+    string[] barkFileNames = 
+        { "Audio/Barks/IDontFeelSoGood", "Audio/Barks/IveHadBetter",
+        "Audio/Barks/justCantGobletDown", "Audio/Barks/kirimvose",
+        "Audio/Barks/manyThanks2", "Audio/Barks/myKidsAreGonnaLoveThis",
+        "Audio/Barks/remindsMeOfHome2", "Audio/Barks/thisIsStrong",
+        "Audio/Barks/thisIsVial1", "Audio/Barks/whatsInThis2",
+        "Audio/Barks/whyIsThisYellow"};
+    AudioClip[] barks;
 
 
     public GameObject sparkles;

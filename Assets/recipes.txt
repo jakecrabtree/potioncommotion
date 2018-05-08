@@ -1,4 +1,4 @@
-12
+13
 Gluten-Free Gluten, 3
 Spiky Boy, 2
 Blind Eye, 2
@@ -29,7 +29,7 @@ Now That's What I Call Potion!, 3
 Red Dye 40, 2
 Silly Spider, 1
 Blind Eye, 1
-Chronic Tonic, 2
+Bilboba Tea, 2
 Red Dye 40, 3
 Blind Eye, 3
 Elixir? I Barely Know Her!, 3
@@ -39,7 +39,11 @@ Red Dye 40, 1
 Brew's Clues, 2
 Tears of a Blue Man, 2
 Spiky Boy, 2
-Instagram Philter, 3
+Jon Sno-Cone, 3
 Blind Eye, 2
 Red Dye 40, 1
 Silly Spider, 1
+Legolager, 3
+Tears of a Blue Man, 2
+Red Dye 40, 2
+Spiky Boy, 1

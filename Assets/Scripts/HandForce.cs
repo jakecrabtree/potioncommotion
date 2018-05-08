@@ -17,7 +17,6 @@ public class HandForce : MonoBehaviour {
 	void Update () {
         Force *= 0.5f;
         Force += transform.position - lastFrame;
-
         lastFrame = transform.position;
 	}
 }

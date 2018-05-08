@@ -25,7 +25,10 @@ public class Timer : MonoBehaviour {
     void UpdateTime(){
         timer -= Time.deltaTime;
         minutes = (int)timer / 60;
+        minutes = (minutes < 0) ? 0 : minutes;
         seconds = (int)timer % 60;
-        text.text = "Time:\n" + minutes + ":" + seconds;
+        seconds = (seconds < 0) ? 0 : seconds;
+        string leadingZero = (seconds < 10) ? "0" : ""; 
+        text.text = "Time:\n" + minutes + ":" + leadingZero + seconds;
     }
 }
