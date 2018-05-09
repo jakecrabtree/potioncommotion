@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1868373879030476}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 1, z: -0.55}
+  m_LocalPosition: {x: 0.5, y: 1, z: -0.55}
   m_LocalScale: {x: 2.0682762, y: 2.0682757, z: 2.0682757}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,7 +59,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: ddbdd68f98b984bf3a2e209c31eb1091, type: 2}
   m_StaticBatchInfo:
@@ -120,7 +119,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114042408639237542
 MonoBehaviour:
   m_ObjectHideFlags: 1
