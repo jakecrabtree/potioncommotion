@@ -71,6 +71,8 @@ public class RecipeManager : MonoBehaviour
         LoadBarks();
         spawnPoint.RespawnAll();
         spawnPoint.recipeManager = this;
+        resetGame.AddListener(ResetGame);
+        endGame.AddListener(EndGame);
     }
 
     // Update is called once per frame
@@ -120,6 +122,18 @@ public class RecipeManager : MonoBehaviour
         scoreText.text = "Score:\n" + numCompletedRecipes;
         audio.PlayOneShot(bellDing);
         Invoke("Bark", 1);
+    }
+
+    void ResetGame()
+    {
+        ChooseRecipe();
+        numCompletedRecipes = 0;
+    }
+
+    void EndGame()
+    {
+        string endMessage = "\nShop's Closed,\n Great Work Today!\n Touch the Time Crystal Ball\n to begin a new day!";
+        gameObject.GetComponent<UnityEngine.UI.Text>().text = endMessage;
     }
 
     void Bark()
@@ -174,7 +188,7 @@ public class RecipeManager : MonoBehaviour
         }
     }
 
-    void ChooseRecipe(Recipe previous)
+    void ChooseRecipe(Recipe previous = null)
     {
         do
         {
@@ -264,6 +278,6 @@ public class RecipeManager : MonoBehaviour
     public bool correctInCup;
     public Text scoreText;
 
-    public UnityEvent endGame;
-    public UnityEvent resetGame;
+    public UnityEvent endGame = new UnityEvent();
+    public UnityEvent resetGame = new UnityEvent();
 }

@@ -44,10 +44,10 @@ public class SpawnPoint : MonoBehaviour
         GameObject cupPrefab = (GameObject)Resources.Load("Prefabs/goblet", typeof(GameObject));
         Cup cup = cupPrefab.GetComponent<Cup>();
         Vector3 cupPos = cup.spawnPos;
+        cupPrefab.GetComponent<Cup>().spawner = this;
+        cupPrefab.transform.position = new Vector3(0.998f, 1.032f, 0.166f); ;
         GameObject instantiatedCup = Instantiate(cupPrefab);
-        instantiatedCup.transform.position = new Vector3(0.998f, 1.032f, 0.166f);;
         ingredients.Add(instantiatedCup);
-        instantiatedCup.GetComponent<Cup>().spawner = this;
     }
 
     public void EndGame(){

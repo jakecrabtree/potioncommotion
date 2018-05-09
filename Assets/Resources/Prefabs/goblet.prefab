@@ -215,6 +215,7 @@ MonoBehaviour:
   containsCompletedPotion: 0
   spawnPos: {x: 0, y: 0, z: 0}
   recipeManager: {fileID: 0}
+  spawner: {fileID: 0}
 --- !u!114 &114568917729510544
 MonoBehaviour:
   m_ObjectHideFlags: 1
