@@ -70,6 +70,7 @@ public class RecipeManager : MonoBehaviour
         roomAudio = GameObject.Find("Room Audio").GetComponent<AudioSource>();
         LoadBarks();
         spawnPoint.RespawnAll();
+        spawnPoint.recipeManager = this;
     }
 
     // Update is called once per frame
@@ -108,7 +109,6 @@ public class RecipeManager : MonoBehaviour
 
     public void deliverPotion(GameObject cupObj)
     {
-        Debug.Log("Makes it here");
         correctInCup = false;
         ChooseRecipe(currentRecipe);
         GameObject newPoof = Instantiate(poof, cupObj.transform);
@@ -250,7 +250,7 @@ public class RecipeManager : MonoBehaviour
     AudioSource roomAudio;
     string[] barkFileNames = 
         { "Audio/Barks/IDontFeelSoGood", "Audio/Barks/IveHadBetter",
-        "Audio/Barks/justCantGobletDown", "Audio/Barks/kirimvose",
+        "Audio/Barks/justCantGobletDown", /*"Audio/Barks/kirimvose",*/
         "Audio/Barks/manyThanks2", "Audio/Barks/myKidsAreGonnaLoveThis",
         "Audio/Barks/remindsMeOfHome2", "Audio/Barks/thisIsStrong",
         "Audio/Barks/thisIsVial1", "Audio/Barks/whatsInThis2",
@@ -263,5 +263,7 @@ public class RecipeManager : MonoBehaviour
     public GameObject poof;
     public bool correctInCup;
     public Text scoreText;
-    
+
+    public UnityEvent endGame;
+    public UnityEvent resetGame;
 }

@@ -6,11 +6,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
 
-    Text text;
-    static int totalTime = 120; //in seconds
-    float timer = (float)totalTime;
-    int minutes;
-    int seconds;
+
 	// Use this for initialization
 	void Start () {
         text = GetComponent<Text>();
@@ -32,7 +28,16 @@ public class Timer : MonoBehaviour {
         text.text = "Time:\n" + minutes + ":" + leadingZero + seconds;
         if (timer <= 0)
         {
+            manager.endGame.Invoke();
         }
     }
+
+    Text text;
+    static int totalTime = 10; //in seconds
+    float timer = (float)totalTime;
+    int minutes;
+    int seconds;
+
+    public RecipeManager manager;
  
 }

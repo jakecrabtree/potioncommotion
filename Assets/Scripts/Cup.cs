@@ -6,6 +6,7 @@ public class Cup : MonoBehaviour
     public bool containsCompletedPotion;
     public Vector3 spawnPos;
     public RecipeManager recipeManager;
+    public SpawnPoint spawner;
 
 	// Use this for initialization
 	void Start()
@@ -29,17 +30,14 @@ public class Cup : MonoBehaviour
     }
 
     public void LeftBounds(){
-        GameObject cupObj = gameObject;
-        Cup cup = cupObj.GetComponent<Cup>();
+        Cup cup = gameObject.GetComponent<Cup>();
         Vector3 pos = cup.spawnPos;
         GameObject variableForPrefab = (GameObject)Resources.Load("Prefabs/goblet", typeof(GameObject));
-        Instantiate(variableForPrefab);
-        variableForPrefab.transform.position = pos;
-        Destroy(cupObj, 0.5f);
+        GameObject instantiated = Instantiate(variableForPrefab);
+        instantiated.transform.position = pos;
+        spawner.ingredients.Add(instantiated);
+        spawner.ingredients.Remove(gameObject);
+        Destroy(gameObject, 0.5f);
     }
 
-    public void EndGame()
-    {
-        Destroy(gameObject);
-    }
 }

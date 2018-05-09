@@ -27,7 +27,9 @@ public class IngredientScript : MonoBehaviour {
         GameObject variableForPrefab = (GameObject)Resources.Load("Prefabs/" + gameObject.tag, typeof(GameObject));
         variableForPrefab.transform.position = pos;
         variableForPrefab.GetComponent<IngredientScript>().spawner = spawner;
-        Instantiate(variableForPrefab);
+        GameObject instantiated = Instantiate(variableForPrefab);
+        spawner.ingredients.Add(instantiated);
+        spawner.ingredients.Remove(gameObject);
         Destroy(gameObject);
     }
 
