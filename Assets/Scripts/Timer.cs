@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour {
 	void Start () {
         text = GetComponent<Text>();
         UpdateTime();
+        manager.resetGame.AddListener(ResetGame);
 	}
 	
 	// Update is called once per frame
@@ -26,18 +27,25 @@ public class Timer : MonoBehaviour {
         seconds = (seconds < 0) ? 0 : seconds;
         string leadingZero = (seconds < 10) ? "0" : ""; 
         text.text = "Time:\n" + minutes + ":" + leadingZero + seconds;
-        if (timer <= 0)
+        if (timer <= 0 && !endGame)
         {
             manager.endGame.Invoke();
+            endGame = true;
         }
     }
 
+    void ResetGame()
+    {
+        endGame = false;
+        timer = (float)totalTime;
+    }
+
     Text text;
-    static int totalTime = 10; //in seconds
+    static int totalTime = 120; //in seconds
     float timer = (float)totalTime;
     int minutes;
     int seconds;
 
     public RecipeManager manager;
- 
+    public bool endGame = false;
 }

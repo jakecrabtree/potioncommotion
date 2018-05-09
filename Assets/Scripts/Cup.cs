@@ -33,6 +33,7 @@ public class Cup : MonoBehaviour
         Cup cup = gameObject.GetComponent<Cup>();
         Vector3 pos = cup.spawnPos;
         GameObject variableForPrefab = (GameObject)Resources.Load("Prefabs/goblet", typeof(GameObject));
+        variableForPrefab.GetComponent<Cup>().spawner = spawner;
         GameObject instantiated = Instantiate(variableForPrefab);
         instantiated.transform.position = pos;
         spawner.ingredients.Add(instantiated);

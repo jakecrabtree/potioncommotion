@@ -16,6 +16,8 @@ TagManager:
   - Red Dye 40
   - Tears of a Blue Man
   - Cauldron
+  - LeftModel
+  - RightModel
   layers:
   - Default
   - TransparentFX
