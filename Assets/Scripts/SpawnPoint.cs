@@ -17,7 +17,6 @@ public class SpawnPoint : MonoBehaviour
 	}
     public void RespawnAll()
     {
-        unoccupied.Clear();
         int count = 0;
         for (int z = 0; z < possibleZ.Length; z++)
         {
@@ -29,20 +28,29 @@ public class SpawnPoint : MonoBehaviour
                     int whichIngredient = count;
                     if (count >= ingredientNames.Length)
                     {
-                        count = Random.Range(0, ingredientNames.Length);
+                        whichIngredient = Random.Range(0, ingredientNames.Length);
                     }
-                    GameObject currPrefab = Resources.Load<GameObject>("Prefabs/" + ingredientNames[count]);
+                    GameObject currPrefab = Resources.Load<GameObject>("Prefabs/" + ingredientNames[whichIngredient]);
                     currPrefab.transform.position = pos;
+                    currPrefab.GetComponent<IngredientScript>().spawner = this;
                     Instantiate(currPrefab);
                     count++;
                 }
             }
         }
     }
+    
+    public Vector3 getRandomSpawnPoint()
+    {
+        return new Vector3(Random.Range(-.5f, 0.75f),
+                           Random.Range(1.0f,1.5f),
+                          -.55f
+                         );
+    }
+
 
     private float[] possibleX = { 0.75f, 0.5f, 0.25f, 0.0f, -.25f, -.5f };
     private float[] possibleY = { 1.5f, 1.0f };
     private float[] possibleZ = { -.55f };
-    private Queue<Vector3> unoccupied = new Queue<Vector3>();
     private string[] ingredientNames = {"Red Dye 40", "Silly Spider", "Tears of a Blue Man", "Blind Eye", "Spiky Boy"};
 }

@@ -111,9 +111,11 @@ public class RecipeManager : MonoBehaviour
         Debug.Log("Makes it here");
         correctInCup = false;
         ChooseRecipe(currentRecipe);
-        Instantiate(poof, cupObj.transform);
+        GameObject newPoof = Instantiate(poof, cupObj.transform);
+        Destroy(newPoof, 1);
         cupObj.GetComponent<Cup>().LeftBounds();
-        Instantiate(sparkles, gameObject.transform);
+        GameObject newSparkles = Instantiate(sparkles, gameObject.transform);
+        Destroy(newSparkles, 1);
         numCompletedRecipes++;
         scoreText.text = "Score:\n" + numCompletedRecipes;
         audio.PlayOneShot(bellDing);
@@ -261,4 +263,5 @@ public class RecipeManager : MonoBehaviour
     public GameObject poof;
     public bool correctInCup;
     public Text scoreText;
+    
 }

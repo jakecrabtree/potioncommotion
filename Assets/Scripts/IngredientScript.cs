@@ -23,20 +23,19 @@ public class IngredientScript : MonoBehaviour {
     }
 
     private void LeftBounds(){
-        Vector3 pos = mySpawnPos;
+        Vector3 pos = spawner.getRandomSpawnPoint();
         GameObject variableForPrefab = (GameObject)Resources.Load("Prefabs/" + gameObject.tag, typeof(GameObject));
         variableForPrefab.transform.position = pos;
+        variableForPrefab.GetComponent<IngredientScript>().spawner = spawner;
         Instantiate(variableForPrefab);
         Destroy(gameObject);
     }
-/*
-    public Vector3 getRandomSpawnPoint()
+
+    public void EndGame()
     {
-        return new Vector3(possibleX[Random.Range(0, possibleX.Length)],
-                           possibleY[Random.Range(0, possibleY.Length)],
-                          possibleZ[Random.Range(0, possibleZ.Length)]
-                         );
+        Destroy(gameObject);
     }
-*/
+
     private Vector3 mySpawnPos;
+    public SpawnPoint spawner;
 }

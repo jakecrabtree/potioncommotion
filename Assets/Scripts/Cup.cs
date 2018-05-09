@@ -38,4 +38,8 @@ public class Cup : MonoBehaviour
         Destroy(cupObj, 0.5f);
     }
 
+    public void EndGame()
+    {
+        Destroy(gameObject);
+    }
 }

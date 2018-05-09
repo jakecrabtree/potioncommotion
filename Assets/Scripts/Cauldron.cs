@@ -58,8 +58,9 @@ public class Cauldron : MonoBehaviour
                 liquidRenderer.material.color = colors[currColor];
                 ParticleSystem.MainModule main = bubSys.main;
                 main.startColor = colors[currColor];
-                Instantiate(bubSys, transform);
-                bubSys.Play();
+                ParticleSystem sys = Instantiate(bubSys, transform);
+                sys.Play();
+                Destroy(sys, 1);
             }
 
         }

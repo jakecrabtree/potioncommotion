@@ -32,12 +32,7 @@ public class Timer : MonoBehaviour {
         text.text = "Time:\n" + minutes + ":" + leadingZero + seconds;
         if (timer <= 0)
         {
-            EndGame();
         }
     }
-
-    void EndGame()
-    {
-
-    }
+ 
 }
