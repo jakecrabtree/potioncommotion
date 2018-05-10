@@ -15,6 +15,8 @@ public class Cauldron : MonoBehaviour
     public Color[] colors = { Color.red, Color.blue, Color.green, Color.yellow, Color.cyan, Color.magenta };
     public int currColor = 0;
 
+    bool ingredientEntered = false;
+
     bool isPlaying = true;
 	// Use this for initialization
 	void Start()
@@ -36,11 +38,17 @@ public class Cauldron : MonoBehaviour
         Renderer liquidRenderer = gameObject.transform.Find("Liquid").gameObject.GetComponent<Renderer>();
         liquidRenderer.enabled = false;
         isPlaying = false;
+        ingredientEntered = false;
     }
 
     void ResetGame(){
         currColor = 0;
         isPlaying = true;
+    }
+    
+    public static bool HasComponent<T> (GameObject obj)
+    {
+        return (obj.GetComponent<T>() as Component) != null;
     }
 
     void OnTriggerEnter(Collider other)
@@ -50,10 +58,7 @@ public class Cauldron : MonoBehaviour
         }
         
         if (other.gameObject.tag != null){
-            if (other.gameObject.tag == "cup" || other.gameObject.tag == "LeftHand" || other.gameObject.tag == "RightHand")
-            {
-            }
-            else if (other.gameObject.tag == "cup_liquid"){
+           if (other.gameObject.tag == "cup_liquid" && ingredientEntered){
                 Renderer liquidRenderer = other.gameObject.GetComponent<Renderer>();
                 liquidRenderer.enabled = true;
                 liquidRenderer.material.color = colors[currColor];
@@ -64,7 +69,8 @@ public class Cauldron : MonoBehaviour
                     recipeManager.UpdateText();
                 }
             }
-            else{
+            else if (HasComponent<IngredientScript>(other.gameObject)){
+                ingredientEntered = true;
                 sourcySizzle.Play();
                 if (recipeManager.addIngredient(other.gameObject.tag))
                 {

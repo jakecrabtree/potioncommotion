@@ -113,8 +113,9 @@ public class RecipeManager : MonoBehaviour
     {
         correctInCup = false;
         ChooseRecipe(currentRecipe);
-        GameObject newPoof = Instantiate(poof, cupObj.transform);
-        Destroy(newPoof, 1.5f);
+        poof.transform.position = cupObj.transform.position;
+        GameObject newPoof = Instantiate(poof);
+        Destroy(newPoof, 2f);
         cupObj.GetComponent<Cup>().LeftBounds();
         GameObject newSparkles = Instantiate(sparkles, gameObject.transform);
         Destroy(newSparkles, 5);

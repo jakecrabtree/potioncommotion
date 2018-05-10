@@ -38,7 +38,7 @@ public class Cup : MonoBehaviour
         instantiated.transform.position = pos;
         spawner.ingredients.Add(instantiated);
         spawner.ingredients.Remove(gameObject);
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 0.2f);
     }
 
 }
